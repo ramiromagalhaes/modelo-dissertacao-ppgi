@@ -1,0 +1,25 @@
+Using latex:
+Credits: Lucas Ribeiro / lucasribeiro@ufrj.br
+Institution: Federal University of Rio de Janeiro
+
+INDEX
+
+1) Platform pre-requisites
+2) Instructions for compilation
+3) Compilation using command line
+
+============================================================
+-----------------------------------------------------------
+1) Platform pre-requisites are:
+
+1.1) LINUX 
+  Necessarly packages to compile with latex on Linux:
+ - texlive-latex-base
+ - texlive-latex-extra
+
+1.2) To install, go to terminal and type:
+$ sudo apt-get install texlive-latex-base texlive-latex-extra
+------------------------------------------------------------
+2) Instructions are within the script file named compileTex.sh at the root project.
+
+3) Instructions are within the script file named compileTex.sh at the root project.
