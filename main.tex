@@ -1,19 +1,52 @@
 %A classe é a dcc-nce, e o parâmetro a ser informado é diss (para dissertação de mestrado)
 \documentclass[diss]{dcc-nce}
-\usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{color,graphicx}
 \usepackage{graphics}
 \usepackage{url}
 \usepackage{amsmath,amssymb}
-\usepackage[numbers]{natbib}
+%\usepackage[numbers]{natbib}
+\usepackage{natbib}
+\usepackage{dsfont} %Usado para conjuntos N, Z, Q, R, C
+\usepackage[portuguese,algoruled,longend]{algorithm2e}
+\usepackage{algorithmic}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}%Para inserir codigos fontes de programas no apendice.
+\usepackage{xcolor}
+% Definindo novas cores
+\definecolor{verde}{rgb}{0,0.5,0}
+% Configurando layout para mostrar codigos C++
+\usepackage{listings}
+\lstset{
+  language=C++,
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue},
+  stringstyle=\color{verde},
+  commentstyle=\color{red},
+  extendedchars=true,
+  showspaces=false,
+  showstringspaces=false,
+  numbers=left,
+  numberstyle=\tiny,
+  breaklines=true,
+  backgroundcolor=\color{green!10},
+  breakautoindent=true,
+  captionpos=b,
+  xleftmargin=0pt,
+}
+
 
 \topmargin=0in
 \textheight=20.5cm
 
+
 \begin{document}
 
+%Este tem que vir primeiro neste arquivo, caso contrario nao aparecerao
+%as palavras-chave na ficha catalografica:
 \input{pre-text/palavrasChavePortugues}    % Editar o arquivo palavrasChavePortugues
+
+%O restante vem depois:
 \input{pre-text/capa}                      % Editar o arquivo capa.tex
 \input{pre-text/dedicatoria}               % Editar o arquivo dedicatoria.tex
 \input{pre-text/agradecimentos}            % Editar o arquivo agradecimentos.tex
@@ -24,21 +57,24 @@
 
 \listoftables{}
 
-\input{pre-text/listaAbreviaturaSiglas}    % Editar o arquivo listaAbreviaturaSiglas.tex
+%\input{pre-text/listaAbreviaturaSiglas}    % Editar o arquivo listaAbreviaturaSiglas.tex
 
 \tableofcontents{}                  % Sumário
 
-\parindent=1.25cm                   % Left margin for each paragraph
+\parindent=1.25cm %start for each paragraph from the left margin
 \parskip=20pt
 \baselineskip=20pt
+
 
 \input{chapters/introducao}         % Editar o arquivo introducao.tex
 \input{chapters/capituloA}          % Editar o arquivo capituloA.tex
 \input{chapters/capituloB}          % Editar o arquivo capituloB.tex
 \input{chapters/conclusao}          % Editar o arquivo introducao.tex
 
-\bibliography{referencias}          % Editar o arquivo "referencias.bib"
-\bibliographystyle{abnt-ufrgs}      % Procura pelo arquivo "abnt-ufrgs" - normas ABNT.
+\bibliography{post-text/referencias}          % Editar o arquivo "referencias.bib"
+\bibliographystyle{latex-stuff/abnt-ufrgs}      % Procura pelo arquivo "abnt-ufrgs" - normas ABNT.
+
+\clearpage
 
 \appendix
 \input{post-text/apendice}          % Editar o arquivo apendice.tex

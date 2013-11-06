@@ -1,0 +1,41 @@
+\begin{theindex}
+
+  \item \'acido
+    \subitem amino, \hyperpage{3--4}
+    \subitem nucl\'eico, \hyperpage{3}
+  \item \'area do trabalho
+    \subitem fundamentos, \hyperpage{3}
+
+  \indexspace
+
+  \item DFT, 
+		\hyperindexformat{\see{transformada discreta de Fourier}}{12}
+  \item DSP, 
+		\hyperindexformat{\see{processamento digital de sinais}}{12}
+
+  \indexspace
+
+  \item Fourier
+    \subitem transformada, 
+		\hyperindexformat{\see{transformada de Fourier}}{12}
+
+  \indexspace
+
+  \item genoma
+    \subitem projetos, \hyperpage{1}
+
+  \indexspace
+
+  \item nucleot\IeC {\'\i }deos, \hyperpage{3}
+
+  \indexspace
+
+  \item STFT, 
+		\hyperindexformat{\see{transformada de Fourier de tempo reduzido}}{12}
+
+  \indexspace
+
+  \item TBP, 
+		\hyperindexformat{\see{periodicidade regi\~ao codificante}}{12}
+
+\end{theindex}

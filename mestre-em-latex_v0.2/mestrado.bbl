@@ -1,0 +1,32 @@
+\begin{thebibliography}{}
+
+\bibitem[Day and Gastel, 2006]{Day2006}
+Day, R.~A. and Gastel, B. (2006).
+\newblock {\em {How to Write and Publish a Scientific Paper}}.
+\newblock Greenwood Press.
+
+\bibitem[Emlet, 1987]{Emlet1987}
+Emlet, R.~B. (1987).
+\newblock {\em {Echinoderm Larval Ecology from the Egg}}, volume~2, chapter~2,
+  pages 55--136.
+\newblock A. A. Balkema Publishers.
+
+\bibitem[Kirk, 2007]{Kirk2008}
+Kirk, R. (2007).
+\newblock {The inconceivability of zombies}.
+\newblock {\em Philosophical Studies}, 139(1):73--89.
+
+\bibitem[{R Development Core Team}, 2005]{R2005}
+{R Development Core Team} (2005).
+\newblock {R: A language and environment for statistical computing}.
+
+\bibitem[Rasband, 1997]{Rasband1997}
+Rasband, W.~S. (1997).
+\newblock {ImageJ}.
+
+\bibitem[Sand-Jensen, 2007]{Sand-Jensen2007}
+Sand-Jensen, K. (2007).
+\newblock {How to write consistently boring scientific literature}.
+\newblock {\em Oikos}, 116(5):723–727.
+
+\end{thebibliography}
