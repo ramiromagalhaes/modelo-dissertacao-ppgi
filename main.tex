@@ -35,6 +35,17 @@
   xleftmargin=0pt,
 }
 
+% Para contagem do numero total de folhas:
+\usepackage{everyshi}
+\makeatletter
+\let\totalpages\relax
+\newcounter{mypage}
+\EveryShipout{\stepcounter{mypage}}
+\AtEndDocument{\clearpage
+   \immediate\write\@auxout{%
+    \string\gdef\string\totalpages{\themypage}}}
+\makeatother
+
 
 \topmargin=0in
 \textheight=20.5cm
