@@ -109,8 +109,8 @@
         \def\@evenhead{{\small\thepage}}
         \def\@oddhead{\hspace*{\fill}{\small\thepage}}
 }
-\pagestyle{empty}
-\let\ps@plain\ps@empty
+%\pagestyle{empty}
+%\let\ps@plain\ps@empty
 
 %==============================================================================
 % Definição de autor(es), orientador e co-orientador
@@ -302,6 +302,9 @@
 % Folha de rosto (Com a descrição "Dissertação de mestrado submetida...")
 %==============================================================================
 \newcommand{\@makefrontpage}{%
+
+	   \thispagestyle{empty}
+	   
        \noindent\@topbox\\
         \vfill
         %\@ifundefined{titlepagespecificinfo}{}{
@@ -344,10 +347,13 @@
 % Catalogação na fonte (CIP) e nominata
 %==============================================================================
 \newcommand{\@makecippage}{%
+
+		\thispagestyle{empty}
+		
         \clearpage%
         \begin{center}
 				%\textbf{Ficha Catalográfica}\\[2ex]
-                \textbf{ }\\[45ex]
+                \textbf{ }\\[48ex]
                 \iiu@cipwindow
         \end{center}
         \vfill
@@ -355,20 +361,22 @@
 }
 % definição do quadro
 \def\iiu@cipwindow{%
-        \framebox[125mm]{%
-        \begin{minipage}{110mm}%
+        \framebox[150mm]{%
+        \begin{minipage}{140mm}%
                 \vspace*{0.2ex}
                 \setlength{\parindent}{5em}%
                 \setlength{\parskip}{1.3ex}%
 				\noindent\@codigobiblioteca ~ \@authoralast, \@authorafirst\par
                 %\@title\ / \@authora.\ -- \@city: UFRJ IM, \@date.\par
                 \indent\@title\ / \@authora.\ -- \@date.\newline
-                \indent\pageref{LastPage}~f.: il.\par
+                %\indent\pageref{LastPage}~f.: il.\par
+                \indent\totalpages~f.: il.\par
                 %Dissertação (Mestrado em Informática)\ -- \ufrgs. \@course, \@city, BR--\@state, \@date. \par \advisorname: \@advisorfirst\ \@advisorlast\@ifundefined{@coadvisor}{}{; \coadvisorname: \@coadvisorfirst\ \@coadvisorlast}.\par
                 \indent Dissertação (Mestrado em Informática)\ -- \ufrgs, \ii, \itp, \ppgc, \@city, \@date. \par 
-				\indent\advisorname: \@advisorfirst\ \@advisorlast\@ifundefined{@coadvisor}{}{; \coadvisorname: \@coadvisorfirst\ \@coadvisorlast}.\par
-				\indent\@cipkw -- Teses. I.~\@advisorlast, \@advisorfirst~(Orient.). \@ifundefined{@coadvisorfirst}{II. \ufrgs, \ii, \itp, \ppgc. III. Título}{II.~\@coadvisorlast, \@coadvisorfirst~(Co-orient.). III. \ufrgs. IV. Título}\\
-
+				\indent\advisorname: \@advisorfirst\ \@advisorlast.\newline
+				\indent\@ifundefined{@coadvisor}{}{\coadvisorname: \@coadvisorfirst\ \@coadvisorlast}.\par
+				\indent\@cipkw -- Teses. I.~\@advisorlast, \@advisorfirst~(Orient.). \@ifundefined{@coadvisorfirst}{II. \ufrgs, \ii, \itp, \ppgc. III. Título}{II.~\@coadvisorlast, \@coadvisorfirst~(Co-orient.). III. \ufrgs, \ii, \itp, \ppgc. IV. Título}\par
+				\indent~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~CDD~~~~~~~~~~~~~~~~~~~~~~~~~~~~\\
                 \vspace{0.2ex}
         \end{minipage}%
         }%
@@ -407,6 +415,9 @@
 % Folha de Aprovação
 %==============================================================================
 \newcommand{\@makeapprovalpage}{%
+
+		\thispagestyle{empty}
+		
         \clearpage%
         \vfill
 		\begin{center}
