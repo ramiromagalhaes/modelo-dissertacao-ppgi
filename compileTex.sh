@@ -109,5 +109,5 @@ dvips -o ./obj/$file_name.ps -t a4 ./obj/$file_name.dvi
 # Compiling ps to pdf
 ps2pdf ./obj/$file_name.ps ./$file_name.pdf
 
-echo "Done! Look out for $file_name.pdf in the root directory"
+echo "Done! Look for $file_name.pdf in the root directory"
 exit 0
