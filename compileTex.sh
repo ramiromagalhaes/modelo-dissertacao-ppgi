@@ -45,8 +45,6 @@ fi
 if [ "clean" == "$1" ]; then
 
    extToClean=(aux blg bbl dvi lof lot log ps toc bib)
-   
-   echo "Cleanning"
 
    for ext in ${extToClean[@]}; do
       fullPath=./obj/*.${ext}
@@ -59,7 +57,6 @@ if [ "clean" == "$1" ]; then
       done
    done
 
-   echo "Clean"
    exit 0
 fi
 
