@@ -63,7 +63,7 @@ fi
 
 
 # Defining variables
-file_name="main"
+MAIN_TEX="main"
 bibtexFolder=./post-text
 bibtexFile="referencias"
 bibtexStyle="abnt-ufrgs"
@@ -73,7 +73,7 @@ texStuffFolder=./latex-stuff
 export TEXINPUTS=${TEXINPUTS}:.:${texStuffFolder}
 # END - Setting searching path
 
-echo "Compiling $file_name.tex"
+echo "Compiling $MAIN_TEX.tex"
 
 # Compilation splited into two parts:
 # 1rst Part - Latex to DVI: After processing a .tex file, the output is a .dvi file.
@@ -83,28 +83,28 @@ echo "Compiling $file_name.tex"
 # file.dvi -> file.ps -> file.pdf
 
 # Compiling with latex
-latex -halt-on-error -output-directory=./obj $file_name.tex
-checkCompilation $? $file_name.tex
+latex -halt-on-error -output-directory=./obj $MAIN_TEX.tex
+checkCompilation $? $MAIN_TEX.tex
 
 # Copying the bibtex file to the obj directory
 cp ${bibtexFolder}/$bibtexFile.bib obj
 cp ${texStuffFolder}/$bibtexStyle.bst obj
 
 # Run bibtex in the obj directory
-cd obj ; bibtex $file_name
+cd obj ; bibtex $MAIN_TEX
 
 # Compiling with latex again to get references
 cd ..
-latex -halt-on-error -output-directory=./obj $file_name.tex
-checkCompilation $? $file_name.tex
-latex -halt-on-error -output-directory=./obj $file_name.tex
-checkCompilation $? $file_name.tex
+latex -halt-on-error -output-directory=./obj $MAIN_TEX.tex
+checkCompilation $? $MAIN_TEX.tex
+latex -halt-on-error -output-directory=./obj $MAIN_TEX.tex
+checkCompilation $? $MAIN_TEX.tex
 
 # Compiling dvi to ps
-dvips -o ./obj/$file_name.ps -t a4 ./obj/$file_name.dvi
+dvips -o ./obj/$MAIN_TEX.ps -t a4 ./obj/$MAIN_TEX.dvi
 
 # Compiling ps to pdf
-ps2pdf ./obj/$file_name.ps ./$file_name.pdf
+ps2pdf ./obj/$MAIN_TEX.ps ./$MAIN_TEX.pdf
 
-echo "Done! Look for $file_name.pdf in the root directory"
+echo "Done! Look for $MAIN_TEX.pdf in the root directory"
 exit 0
