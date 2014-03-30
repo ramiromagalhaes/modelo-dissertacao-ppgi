@@ -3,12 +3,24 @@
 \usepackage[T1]{fontenc}
 \usepackage{color,graphicx}
 \usepackage{graphics}
+% Caminho para as imagens que serão inseridas no documento
+\graphicspath{{./imagens/}}
+
 \usepackage{url}
 \usepackage{amsmath,amssymb}
 %\usepackage[numbers]{natbib}
 \usepackage{natbib}
 \usepackage{dsfont} %Usado para conjuntos N, Z, Q, R, C
+
 \usepackage[portuguese,algoruled,longend]{algorithm2e}
+% Corrige problemas de tradução para português do pacote algorithm2e
+% Vide http://tex.stackexchange.com/questions/113325/problem-with-algorithm2e-and-portuguese-option
+\SetKwFor{Para}{Para}{fa\c{c}a}{fim para}
+\SetKwIF{Se}{SenaoSe}{Senao}{Se}{então}{senão, se}{senão}{fim}
+\SetKwBlock{Iniciacao}{Inicia\c{c}ão}{}{}
+\SetKw{Return}{retorne}
+\SetKwFor{Enquanto}{Enquanto}{faça}{fim enquanto}
+
 \usepackage{algorithmic}
 \usepackage[utf8]{inputenc}
 \usepackage{listings}%Para inserir codigos fontes de programas no apendice.
@@ -55,40 +67,39 @@
 
 %Este tem que vir primeiro neste arquivo, caso contrario nao aparecerao
 %as palavras-chave na ficha catalografica:
-\input{pre-text/palavrasChavePortugues}    % Editar o arquivo palavrasChavePortugues
+\input{pre-textual/palavrasChavePortugues}    % Editar o arquivo palavrasChavePortugues
 
 %O restante vem depois:
-\input{pre-text/capa}                      % Editar o arquivo capa.tex
-\input{pre-text/dedicatoria}               % Editar o arquivo dedicatoria.tex
-\input{pre-text/agradecimentos}            % Editar o arquivo agradecimentos.tex
-\input{pre-text/resumoPortugues}           % Editar o arquivo resumoPortugues.tex
-\input{pre-text/resumoIngles}              % Editar o arquivo resumoIngles.tex
+\input{pre-textual/capa}                      % Editar o arquivo capa.tex
+\input{pre-textual/dedicatoria}               % Editar o arquivo dedicatoria.tex
+\input{pre-textual/agradecimentos}            % Editar o arquivo agradecimentos.tex
+\input{pre-textual/resumoPortugues}           % Editar o arquivo resumoPortugues.tex
+\input{pre-textual/resumoIngles}              % Editar o arquivo resumoIngles.tex
 
 \listoffigures{}
 
 \listoftables{}
 
-%\input{pre-text/listaAbreviaturaSiglas}    % Editar o arquivo listaAbreviaturaSiglas.tex
+%\input{pre-textual/listaAbreviaturaSiglas}    % Editar o arquivo listaAbreviaturaSiglas.tex
 
 \tableofcontents{}                  % Sumário
 
-\parindent=1.25cm %start for each paragraph from the left margin
+\parindent=1.25cm %Início de cada parágrafo a partir da margem esquerda
 \parskip=20pt
 \baselineskip=20pt
 
+\input{capitulos/capituloA.tex}  %Editar o capituloA
+\input{capitulos/capituloB.tex}  %Editar o capituloB
+\input{capitulos/conclusao.tex}  %Editar a conclusao
+\input{capitulos/introducao.tex} %Editar a introducao
 
-\input{chapters/introducao}         % Editar o arquivo introducao.tex
-\input{chapters/capituloA}          % Editar o arquivo capituloA.tex
-\input{chapters/capituloB}          % Editar o arquivo capituloB.tex
-\input{chapters/conclusao}          % Editar o arquivo introducao.tex
-
-\bibliography{post-text/referencias}          % Editar o arquivo "referencias.bib"
+\bibliography{pos-textual/referencias}          % Editar o arquivo "referencias.bib"
 \bibliographystyle{latex-stuff/abnt-ufrgs}      % Procura pelo arquivo "abnt-ufrgs" - normas ABNT.
 
 \clearpage
 
 \appendix
-\input{post-text/apendice}          % Editar o arquivo apendice.tex
+\input{pos-textual/apendice}          % Editar o arquivo apendice.tex
 
 \end{document}
 

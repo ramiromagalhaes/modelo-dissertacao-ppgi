@@ -64,7 +64,7 @@ fi
 
 # Defining variables
 MAIN_TEX="main"
-bibtexFolder=./post-text
+bibtexFolder=./pos-textual
 bibtexFile="referencias"
 bibtexStyle="abnt-ufrgs"
 texStuffFolder=./latex-stuff
