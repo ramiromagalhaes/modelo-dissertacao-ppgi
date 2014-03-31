@@ -28,6 +28,6 @@ Todo o código é GPL.
 
 
 # Crédito
-> Lucas Ribeiro (lucasribeiro@ufrj.br)
-> Rodrigo Madureira (rodrigo.rangel@nce.ufrj.br)
-> Ramiro Pereira de Magalhães
+* Lucas Ribeiro (lucasribeiro@ufrj.br)
+* Rodrigo Madureira (rodrigo.rangel@nce.ufrj.br)
+* Ramiro Pereira de Magalhães
