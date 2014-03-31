@@ -7,13 +7,13 @@ Este projeto...
 # Requisitos
 
 Um sistema Debian ou Ubuntu com os seguintes pacotes instalados
+* texlive-latex-base
+* texlive-latex-extra
 
-> texlive-latex-base
-> texlive-latex-extra
-
-Para instalar estes pacotes, execute, como super usuário a seguinte instrução:
+Para instalá-lo, execute como super usuário o seguinte comando:
+```
 $ apt-get install texlive-latex-base texlive-latex-extra
-
+```
 
 
 # Compilação dos fontes em PDF
