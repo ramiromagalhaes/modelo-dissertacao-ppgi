@@ -1,51 +1,31 @@
 %A classe é a dcc-nce, e o parâmetro a ser informado é diss (para dissertação de mestrado)
 \documentclass[diss]{dcc-nce}
+
 \usepackage[T1]{fontenc}
-\usepackage{color,graphicx}
-\usepackage{graphics}
-% Caminho para as imagens que serão inseridas no documento
-\graphicspath{{./figuras/}}
+\usepackage[utf8]{inputenc}
 
-\usepackage{url}
-\usepackage{amsmath,amssymb}
-%\usepackage[numbers]{natbib}
+\usepackage{cmap} % Mapear caracteres especiais no PDF
+
+\usepackage{graphicx}
+\graphicspath{{./figuras/}} % Caminho padrão das imagens
+
+\usepackage{xcolor}
+
+% \usepackage[numbers]{natbib}
 \usepackage{natbib}
-\usepackage{dsfont} %Usado para conjuntos N, Z, Q, R, C
 
+\usepackage{amsmath,amssymb,amsfonts,textcomp}
 \usepackage[portuguese,algoruled,longend]{algorithm2e}
-% Corrige problemas de tradução para português do pacote algorithm2e
-% Vide http://tex.stackexchange.com/questions/113325/problem-with-algorithm2e-and-portuguese-option
-\SetKwFor{Para}{Para}{fa\c{c}a}{fim para}
-\SetKwIF{Se}{SenaoSe}{Senao}{Se}{então}{senão, se}{senão}{fim}
+\SetKwFor{Para}{Para}{fa\c{c}a}{fim para}                      % Corrige problemas de tradução para português do pacote algorithm2e
+\SetKwIF{Se}{SenaoSe}{Senao}{Se}{então}{senão, se}{senão}{fim} % Vide http://tex.stackexchange.com/questions/113325/problem-with-algorithm2e-and-portuguese-option
 \SetKwBlock{Iniciacao}{Inicia\c{c}ão}{}{}
 \SetKw{Return}{retorne}
 \SetKwFor{Enquanto}{Enquanto}{faça}{fim enquanto}
 
-\usepackage{algorithmic}
-\usepackage[utf8]{inputenc}
-\usepackage{listings}%Para inserir codigos fontes de programas no apendice.
-\usepackage{xcolor}
-% Definindo novas cores
-\definecolor{verde}{rgb}{0,0.5,0}
-% Configurando layout para mostrar codigos C++
-\usepackage{listings}
-\lstset{
-  language=C++,
-  basicstyle=\ttfamily\small,
-  keywordstyle=\color{blue},
-  stringstyle=\color{verde},
-  commentstyle=\color{red},
-  extendedchars=true,
-  showspaces=false,
-  showstringspaces=false,
-  numbers=left,
-  numberstyle=\tiny,
-  breaklines=true,
-  backgroundcolor=\color{green!10},
-  breakautoindent=true,
-  captionpos=b,
-  xleftmargin=0pt,
-}
+\usepackage{url}
+
+% Suporte a lista de afazeres. Bem conveniente para anotar e exibir pendências.
+\usepackage{todonotes}
 
 % Para contagem do numero total de folhas:
 \usepackage{everyshi}
@@ -59,8 +39,20 @@
 \makeatother
 
 
-\topmargin=0in
-\textheight=20.5cm
+% Suporte para hipertexto, links para referências e figuras.
+\usepackage{hyperref} %Comentado pois ainda não está configurado corretamente...
+% Configurações dos links e metatags do PDF a ser gerado
+\hypersetup{colorlinks=true, linkcolor=blue, citecolor=blue, filecolor=blue, urlcolor=blue}
+
+
+%Inclui as definições de macros e qualquer outra coisa importante para o usuário
+\include{definicoes}
+
+
+%Para informações sobre o layout da página, vide http://en.wikibooks.org/wiki/LaTeX/Page_Layout
+\setlength{\topmargin}{0in}
+\setlength{\textheight}{20.5cm}
+
 
 
 \begin{document}
@@ -82,27 +74,26 @@
 
 %\input{pre-textual/listaAbreviaturaSiglas}    % Editar o arquivo listaAbreviaturaSiglas.tex
 
-\tableofcontents{}                  % Sumário
+\tableofcontents{}                             % Sumário
 
-\parindent=1.25cm %Início de cada parágrafo a partir da margem esquerda
-\parskip=20pt
-\baselineskip=20pt
+\setlength{\parindent}{1.25cm}                 % Início de cada parágrafo a partir da margem esquerda
+\setlength{\parindent}{20pt}
+\setlength{\baselineskip}{20pt}
 
+\pagenumbering{arabic} %numeração de páginas em arábico começa a partir do primeiro capítulo
+
+\input{capitulos/introducao.tex} %Editar a introducao
 \input{capitulos/capituloA.tex}  %Editar o capituloA
 \input{capitulos/capituloB.tex}  %Editar o capituloB
 \input{capitulos/conclusao.tex}  %Editar a conclusao
-\input{capitulos/introducao.tex} %Editar a introducao
 
-\bibliography{pos-textual/referencias}          % Editar o arquivo "referencias.bib"
-\bibliographystyle{latex-stuff/abnt-ufrgs}      % Procura pelo arquivo "abnt-ufrgs" - normas ABNT.
+\bibliography{pos-textual/referencias}    % Arquivo .BIB com as referências bibliográficas
+\bibliographystyle{latex-stuff/abnt-ufrgs} % Arquivo de descreve como as referências devem ser apresentadas
 
 \clearpage
 
-\appendix
-\input{pos-textual/apendice}          % Editar o arquivo apendice.tex
+%\appendix %comentado pois não está funcionando corretamente...
+%\input{pos-textual/apendice}          % Editar o arquivo apendice.tex
 
 \end{document}
 
-%\citep* - citação completa, com todos os autores
-
-%\citeyearpar - cita somente o ano da publicação

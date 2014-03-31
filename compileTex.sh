@@ -21,6 +21,8 @@
 # $ ./compileTex.sh clean
 
 
+# Vide http://tex.stackexchange.com/questions/121383/how-does-the-latex-compile-chain-work-exactly
+
 # BEG - Functions declarations
 function checkCompilation {
   if [[ "$1" != 0 ]]; then
@@ -31,80 +33,64 @@ function checkCompilation {
 # BEG - Functions declarations
 
 
-# Checks whether is there a directory named obj or not.
-# In case does not exist, create it.
-if [ ! -d "obj" ]; then
-  mkdir obj
-fi
+
+# Defining variables
+MAIN_TEX="main"
+OUTPUT_DIR="obj"
+texStuffFolder=./latex-stuff
+bibtexFolder=./pos-textual
+bibtexFile="referencias"
+bibtexStyle="abnt-ufrgs"
+
 
 
 ############ START SCRIPTS (clean and compilation) #############
 
-# To clean obj files, to use it just run
+# To clean ${OUTPUT_DIR} files, to use it just run
 #$./compileTex.sh clean
 if [ "clean" == "$1" ]; then
-
-   extToClean=(aux blg bbl dvi lof lot log ps toc bib)
-
-   for ext in ${extToClean[@]}; do
-      fullPath=./obj/*.${ext}
-      
-      for file in ${fullPath}; do
-        if [ -e ${file} ]
-        then
-          rm ${file}
-        fi
-      done
-   done
-
+   rm -r ./${OUTPUT_DIR}
    exit 0
 fi
 
 
 
-# Defining variables
-MAIN_TEX="main"
-bibtexFolder=./pos-textual
-bibtexFile="referencias"
-bibtexStyle="abnt-ufrgs"
-texStuffFolder=./latex-stuff
-
-# BEG - Setting searching path
+# BEG - Setting search path
 export TEXINPUTS=${TEXINPUTS}:.:${texStuffFolder}
+export BIBINPUTS=${BIBINPUTS}:${OUTPUT_DIR}/${MAIN_TEX}.aux:${bibtexFolder}/$bibtexFile.bib:${texStuffFolder}/$bibtexStyle.bst
+export TEXMFOUTPUT=${TEXMFOUTPUT}:${OUTPUT_DIR}
 # END - Setting searching path
 
 echo "Compiling $MAIN_TEX.tex"
 
-# Compilation splited into two parts:
-# 1rst Part - Latex to DVI: After processing a .tex file, the output is a .dvi file.
-# latex -> bibtex -> latex -> latex
-# 2nd  Part - DVI to PDF: After processing a .dvi file, the output is a .pdf file.
-# Sequence of transformation
-# file.dvi -> file.ps -> file.pdf
+
+
+# Checks whether is there a directory named ${OUTPUT_DIR} or not.
+# In case does not exist, create it.
+if [ ! -d ${OUTPUT_DIR} ]; then
+  mkdir ${OUTPUT_DIR}
+fi
+
+
 
 # Compiling with latex
-latex -halt-on-error -output-directory=./obj $MAIN_TEX.tex
+pdflatex -halt-on-error -output-directory=./${OUTPUT_DIR} $MAIN_TEX.tex
 checkCompilation $? $MAIN_TEX.tex
 
-# Copying the bibtex file to the obj directory
-cp ${bibtexFolder}/$bibtexFile.bib obj
-cp ${texStuffFolder}/$bibtexStyle.bst obj
-
-# Run bibtex in the obj directory
-cd obj ; bibtex $MAIN_TEX
-
-# Compiling with latex again to get references
-cd ..
-latex -halt-on-error -output-directory=./obj $MAIN_TEX.tex
-checkCompilation $? $MAIN_TEX.tex
-latex -halt-on-error -output-directory=./obj $MAIN_TEX.tex
+# Run bibtex in the ${OUTPUT_DIR} directory
+bibtex ${OUTPUT_DIR}/$MAIN_TEX
 checkCompilation $? $MAIN_TEX.tex
 
-# Compiling dvi to ps
-dvips -o ./obj/$MAIN_TEX.ps -t a4 ./obj/$MAIN_TEX.dvi
+# Compiling with latex again to get bibliography and cross-references
+pdflatex -halt-on-error -output-directory=./${OUTPUT_DIR} $MAIN_TEX.tex
+checkCompilation $? $MAIN_TEX.tex
 
-# Compiling ps to pdf
-ps2pdf ./obj/$MAIN_TEX.ps ./$MAIN_TEX.pdf
+# Compiling with latex again to get citations
+pdflatex -halt-on-error -output-directory=./${OUTPUT_DIR} $MAIN_TEX.tex
+checkCompilation $? $MAIN_TEX.tex
+
+mv ./${OUTPUT_DIR}/$MAIN_TEX.pdf .
 
 echo "Done! Look for $MAIN_TEX.pdf in the root directory"
 exit 0
+
